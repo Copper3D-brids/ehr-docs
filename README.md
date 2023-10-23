@@ -1,5 +1,5 @@
 <p align="center">
-<img  alt="ehr" src="./src/public/logo.png"/>
+<img  alt="ehr" src="./src/public/logo.png" width="50%"/>
 </p>
 
 <p align="center">

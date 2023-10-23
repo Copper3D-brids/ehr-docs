@@ -27,9 +27,9 @@ export function createSocialLinks(): SocialLink[] {
 
 export function createAlgolia() {
   return {
-    apiKey: "",
-    indexName: "ehr-docs",
-    appId: "BH4D9OD16A",
+    apiKey: "aa0aeda27658e3d1649b644c73cc2c53",
+    indexName: "ehr",
+    appId: "HZO6T4XO3T",
     placeholder: "Keywords for search docs",
     translations: {
       button: {
