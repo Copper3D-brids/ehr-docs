@@ -225,9 +225,10 @@ Accept: application/dicom+json
 
 The WADO-RS server then returns the complete DICOM metadata for the requested series.
 
+
 #### Identifier FHIR DataType
 
-Identifier systems are URIs that may be used in the system element of the Identifier datatype.
+Identifier systems are URIs that may be used in the system element of the Identifier datatype. 
 
 [HL7 Terminology](https://terminology.hl7.org/identifiers.html) provides a registry of Identifier systems which are actively curated by HL7 International. If a URI is defined in HL7 Terminology, it **SHOULD** be used in preference to any other Identifier.system. If the URI was defined in HL7 Terminology prior to an official release of the FHIR core specification, those URIs **SHALL** be used in preference to any other Identifier.system. E.g, all system URIs defined on terminology.hl7.org prior to the release of FHIR R5 **SHELL** be used in systems claiming conformance to FHIR R5.
 
