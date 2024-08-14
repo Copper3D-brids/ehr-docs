@@ -4,10 +4,12 @@
 
 - Currently, it is a **private** repository, will open source later...
 
-## Background
- Meet John Thompson. He is a 36 year old (date of birth is 08-02-1982) man from `Philadelphia`. He is thinking of visiting our clinical center because of some health problems. John calls our center and asks if he can visit us.
+- Original example from [Aidbox / jupyter-course](https://github.com/Aidbox/jupyter-course/tree/master)
 
- Let's check if he has visited our center before.
+## Background
+ Introducing Linman Zhang. She is a 42 year old (date of birth is 12-05-1976) woman from `Auckland`. She is considering coming to our medical facility due to some health concerns. Linman contacts our facility and inquires if she can come for a visit.
+
+Let’s verify if she has been to our center in the past.
 
 ## Setup environment
 
@@ -128,26 +130,26 @@ To minimize the result, FHIR API provides special search tools.
 
 The `Patient` resource has many search parameters. Yopu can read more about them in the [official FHIR specification](http://hl7.org/fhir/R4/patient.html#search).
 
-For searching we should use `search()` method on a search set. If we wnat to find, for example, all patients with the first name `Jhon` and the last name `Thompson` we should use intersection search, passing list of values, for example, `search(name=['John', 'Thompson'])`. This is known as an **AND** search parameter. If we wanted to find all patients with name `John` or `Carl`, we would use `search(name='John,Carl')`. This is known as an **OR** search parameter.
+For searching we should use `search()` method on a search set. If we wnat to find, for example, all patients with the first name `Linman` and the last name `Zhang` we should use intersection search, passing list of values, for example, `search(name=['Linman', 'Zhang'])`. This is known as an **AND** search parameter. If we wanted to find all patients with name `Linman` or `Carl`, we would use `search(name='Linman,Carl')`. This is known as an **OR** search parameter.
 
 Let's try to search for a patient by a parameter `name`.
 
 This param is used for searching by string fields in the patient's name, including family, given, prefix, suffix, and/or text.
 
 ```python
-patients = await client.resources('Patient').search(name=['John', 'Thompson']).fetch_all()
+patients = await client.resources('Patient').search(name=['Linman', 'Zhang']).fetch_all()
 ```
 
-We found nothing. Maybe his record has a type in the name. Now let's try to search by other parameters, for example, by brith date. The search parameter has name `brithdate` according to the [FHIR specification](http://hl7.org/fhir/R4/patient.html#search)
+We found nothing. Maybe her record has a type in the name. Now let's try to search by other parameters, for example, by brith date. The search parameter has name `brithdate` according to the [FHIR specification](http://hl7.org/fhir/R4/patient.html#search)
 
 ```python
-patients = await client.resources('Patient').search(birthdate='1982-08-02').fetch_all()
+patients = await client.resources('Patient').search(birthdate='1976-05-12').fetch_all()
 ```
 
-Also, we can try to find all patients who wre born in `Philadelphia`. For this purpose we should use `address` search param.
+Also, we can try to find all patients who wre born in `Auckland`. For this purpose we should use `address` search param.
 
 ```python
-patients = await client.resources('Patient').search(address-'Philadelphia').fetch_all()
+patients = await client.resources('Patient').search(address-'Auckland').fetch_all()
 ```
 
 However, we didn't find our client in the FHIR server system. Thus, we can create a record for him. But before we do that, let's learn more about how different fields should be stored.
@@ -180,10 +182,10 @@ Names might be changed and people may have different names in different contexts
 
 The most popular fields in the structure are:
 
-- given - given names, not only first name (e.g., John). It should ne a list of names, even if the person has only one.
-- family - family name (e.g., Tompson).
+- given - given names, not only first name (e.g., Linman). It should ne a list of names, even if the person has only one.
+- family - family name (e.g., Zhang).
 - use - in which context this name applies.
-- text - text representation of the full name (e.g., John Tompson).
+- text - text representation of the full name (e.g., Linman Zhang).
 
 More information you can find more information in the [FHIR HumanName specification](https://www.hl7.org/fhir/datatypes.html#humanname).
 
@@ -257,30 +259,30 @@ patient['meta']
 
 Finally, we should update the patient's details.
 
-Let's edit the address: the new one is `1818 Market St, apartment 100, Philadelphia, PA 19103`.
+Let's edit the address: the new one is `33 Manukau Station Road, Manukau City Centre, Auckland 2104`.
 
 The `Address` format is on [FHIR Address specification](https://www.hl7.org/fhir/datatypes.html#address).
 
 ```py
 patient['address'] = [
   {
-    "line": "1818 Market St, apartment 100",
-    "city": "Philadelphia",
-    "postalCode": "19103",
-    "country": "3166-2",
+    "line": "33 Manukau Station Road, Manukau City Centre",
+    "city": "Auckland",
+    "postalCode": "2104",
+    "country": "64",
     "use": "home",
     "type":"physical"
   }
 ]
 ```
 
-And set the new telephone number: (215) 352-3801. Look the [FHIR Telephone specification](http://hl7.org/fhir/R4/datatypes.html#ContactPoint)
+And set the new telephone number: (021) 027-5301. Look the [FHIR Telephone specification](http://hl7.org/fhir/R4/datatypes.html#ContactPoint)
 
 ```py
 patient['telecom'] = [
   {
     "system": "phone",
-    "value": "(215) 352-3801",
+    "value": "(021) 027-5301",
     "use": "work"
   }
 ]
@@ -299,7 +301,7 @@ Now, we need to make sure that we have our patient record in the database.
 Let's try to search for the patient again. For this operation we should use the same query as we did it before.
 
 ```py
-patients = await client.resources('Patient').search(name=['John', 'Thompson']).fetch_all()
+patients = await client.resources('Patient').search(name=['Linman', 'Zhang']).fetch_all()
 
 pprint(patients)
 ```
@@ -325,7 +327,7 @@ Let's try to delete a non-relational Patient resource (without other resources' 
 
 ```py
 patientResourceSearchSet = client.resources('Patient')
-patients = await patientResourceSearchSet.search(name=['John', 'Thompson']).fetch_all()
+patients = await patientResourceSearchSet.search(name=['Linman', 'Zhang']).fetch_all()
 
 for patient in patients:
   await patient.delete()
@@ -345,3 +347,9 @@ From this laboratory work we learned how to:
 - create patient record.
 - edit patient record.
 - delete a non-relational resource.
+
+## Acknowledgement
+
+[Aidbox / jupyter-course](https://github.com/Aidbox/jupyter-course/tree/master)
+
+[fhirpy](https://pypi.org/project/fhirpy/)

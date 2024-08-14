@@ -4,6 +4,8 @@
 
 - Currently, it is a **private** repository, will open source later...
 
+- Original example from [Aidbox / jupyter-course](https://github.com/Aidbox/jupyter-course/tree/master)
+
 ## Background
 
 ### Scenario
@@ -225,3 +227,9 @@ In this tutorial we've discussed:
 - What is the difference between `Condition` and `Observation`
 - How to create `Encounter`
 - How to link `Condition` and `Observation` to `Encounter`
+
+## Acknowledgement
+
+[Aidbox / jupyter-course](https://github.com/Aidbox/jupyter-course/tree/master)
+
+[fhirpy](https://pypi.org/project/fhirpy/)
