@@ -4,6 +4,8 @@
 
 - Currently, it is a **private** repository, will open source later...
 
+- Original example from [Aidbox / jupyter-course](https://github.com/Aidbox/jupyter-course/tree/master)
+
 ## Background
 
 ### Scenario
@@ -194,3 +196,9 @@ In this tutorial the following topics were covered:
 - How to find a `Schedule` by service type and date.
 - How to load `Slots` for a Schedule resource.
 - How to search `Slots` for specific date and speciality.
+
+## Acknowledgement
+
+[Aidbox / jupyter-course](https://github.com/Aidbox/jupyter-course/tree/master)
+
+[fhirpy](https://pypi.org/project/fhirpy/)

@@ -4,6 +4,8 @@
 
 - Currently, it is a **private** repository, will open source later...
 
+- Original example from [Aidbox / jupyter-course](https://github.com/Aidbox/jupyter-course/tree/master)
+
 ## Background
 
 A Observation Resources are used to store basic physical information about the patient.
@@ -390,3 +392,9 @@ From this tutorial we will more familar with:
 - Create Observation records.
 - Srearch releted resources.
 - Display different Resource's attributes.
+
+## Acknowledgement
+
+[Aidbox / jupyter-course](https://github.com/Aidbox/jupyter-course/tree/master)
+
+[fhirpy](https://pypi.org/project/fhirpy/)

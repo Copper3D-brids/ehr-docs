@@ -4,6 +4,8 @@
 
 - Currently, it is a **private** repository, will open source later...
 
+- Original example from [Aidbox / jupyter-course](https://github.com/Aidbox/jupyter-course/tree/master)
+
 ## Background
 
 ### Scenario
@@ -146,3 +148,9 @@ In this tutorial we've discussed:
 - How to book a time slot
 - How to create an `Appointment`
 - How to search for `Appointments`
+
+## Acknowledgement
+
+[Aidbox / jupyter-course](https://github.com/Aidbox/jupyter-course/tree/master)
+
+[fhirpy](https://pypi.org/project/fhirpy/)
