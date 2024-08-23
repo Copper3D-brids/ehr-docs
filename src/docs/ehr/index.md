@@ -1,5 +1,9 @@
-# What is EHR
+# DigitalTWIN on FHIR
 
-EHR (Electronic Health Record) data can come from multiple ways: Hospital EHR server, Volunteer Study/report (RedCap), [Duke University MRI](https://wiki.cancerimagingarchive.net/pages/viewpage.action?pageId=70226903), or Remote monitoring data.
+DigitalTwin on FHIR: Enhancing Healthcare Research
 
-These EHR data is raw data, which can be stored in multiple formats: xlsx, fhir boundle resource, Dicom. And these data may have sensitive information (such as patient's `name`, `sex`, `brith`), so when we get these raw EHR data, the first thing we need to do is processing patient sensitive information via some python `de-identify package`. 
+Aim:
+The goal of DigitalTwin on FHIR is to leverage SPARC and Hospital EHR data to create a virtual patient model for research purposes. This approach aims to enhance the interoperability and accessibility of healthcare data, making it more compliant with Fast Healthcare Interoperability Resources (FHIR) standards.
+
+Methods:
+To achieve this, we will collect and store various types of data, including Measurements, Models, Workflows, and Tools, in the FHIR format. This structured approach ensures that the data is easily shareable and usable across different healthcare systems and research platforms.

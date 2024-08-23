@@ -19,7 +19,7 @@ export type SocialLinkIcon =
 
 // setting --------------------------------------------------------------------
 
-export const github = "https://github.com/Copper3D-brids/ehr-docs";
+export const github = "https://github.com/Copper3D-brids/digitalTwinOnFHIR";
 
 export function createSocialLinks(): SocialLink[] {
   return [{ icon: "github", link: github }];

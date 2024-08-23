@@ -26,7 +26,7 @@ export default {
   lastUpdated: true,
   useWebFonts: false,
   cleanUrls: true,
-  title: "EHR-docs",
+  title: "DigitalTWINonFHIR",
   description: "A knowledge base for EHR & CI/CD",
   // lang: "zh-CN",
   markdown: {
@@ -41,8 +41,8 @@ export default {
       text: "Edit this page on GitHub",
     },
     footer: {
-      message: `EHR-docs, Welcome <a target="_blank" style="color: var(--vp-c-brand)" href="${github}">star ⭐</a> let's get more people to discover!`,
-      copyright: `<a target="_blank" href="${github}/blob/main/LICENSE">Apache-2.0 License CodeSpaceX </a> | COPYRIGHT © 2023-${new Date().getFullYear()}`,
+      message: `DigitalTWIN on FHIR, Welcome <a target="_blank" style="color: var(--vp-c-brand)" href="${github}">star ⭐</a> let's get more people to discover!`,
+      copyright: `<a target="_blank" href="${github}/blob/main/LICENSE">Apache-2.0 License ABI </a> | COPYRIGHT © 2023-${new Date().getFullYear()}`,
     },
     socialLinks: createSocialLinks(),
     algolia: createAlgolia(),
@@ -107,37 +107,6 @@ function createNav() {
           link: "/docs/ehr/soda/soda_guidelines",
           activeMatch: "/docs/ehr",
         },
-      ],
-    },
-    {
-      text: "Copper3d",
-      items: [
-        {
-          text: "Issues",
-          link: "/docs/copper3d/issues",
-          activeMatch: "/docs/copper3d",
-        },
-      ],
-    },
-  ];
-}
-
-function createInspirationsSidebar() {
-  return [
-    {
-      text: "",
-      collapsed: false,
-      items: [
-        {
-          text: "Python",
-          link: "/docs/inspirations/python",
-        },
-        {
-          text: "Git",
-          link: "/docs/inspirations/git",
-        },
-        { text: "Javascript", link: "/docs/interview/javascript" },
-        { text: "TypeScript", link: "/docs/interview/typescript" },
       ],
     },
   ];

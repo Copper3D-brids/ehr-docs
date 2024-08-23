@@ -1,25 +1,28 @@
 ---
 layout: home
-title: ehr-docs
+title: DigitalTwin on FHIR
 titleTemplate: EHR&FHIR
 
 hero:
-  name: ehr-docs
-  text: "EHR & DevOps Collection"
+  name: DigitalTwin on FHIR
+  text: "Measurments     Models       Workflows       Tools"
   tagline:
   image:
     src: /logo.png
-    alt: ehr-docs
+    alt: DigitalTwin on FHIR
   actions:
     - theme: brand
-      text: quickly start
-      link: /docs/ehr/index
+      text: Roadmap
+      link: /docs/ehr/roadmap
     - theme: alt
-      text: Copper3d API
-      link: https://linkungao.github.io/copper3d_visualisation/
+      text: DigitalTWIN on FHIR Adapter
+      link: https://github.com/Copper3D-brids/digitalTwinOnFHIR
+    - theme: alt
+      text: Clincal Description Annotator
+      link: https://github.com/Copper3D-brids/clinic-description-annotator
 features:
   - icon: ⚡️
-    title: EHR
+    title: DigitalTwin on FHIR
     details: More details on EHR & FHIR & OMOP
     link: /docs/ehr/index
     linkText: Let's go
