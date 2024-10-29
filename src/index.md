@@ -24,7 +24,7 @@ features:
   - icon: ⚡️
     title: DigitalTwins on FHIR
     details: More details on EHR & FHIR & OMOP
-    link: /docs/ehr/index
+    link: /docs/ehr/fhir/digitaltwins-on-fhir/digitaltwinsonfhir
     linkText: Let's go
   - icon: 🌋
     title: FHIR & Server Tutorials
