@@ -8,6 +8,7 @@
   height: 24px;
   margin: 4px 6px 0 0;
   background-image: url(/navLogo.png);
+  background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   vertical-align: middle;
