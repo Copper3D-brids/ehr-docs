@@ -26,7 +26,7 @@ export default {
   lastUpdated: true,
   useWebFonts: false,
   cleanUrls: true,
-  title: "DigitalTWINS on FHIR",
+  title: "DTSoF",
   description: "A knowledge base for EHR & CI/CD",
   // lang: "zh-CN",
   markdown: {
