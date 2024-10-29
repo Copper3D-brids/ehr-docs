@@ -26,7 +26,7 @@ export default {
   lastUpdated: true,
   useWebFonts: false,
   cleanUrls: true,
-  title: "DigitalTWINonFHIR",
+  title: "DigitalTWINS on FHIR",
   description: "A knowledge base for EHR & CI/CD",
   // lang: "zh-CN",
   markdown: {
@@ -50,9 +50,7 @@ export default {
     nav: createNav(),
     sidebar: {
       // EHR
-      "/docs/ehr": createEHRColumnSidebar(),
-      // Copper3d
-      "/docs/copper3d/": createCopper3dSidebar(),
+      "/docs/ehr": createEHRColumnSidebar()
     },
   },
   vite: {
@@ -76,7 +74,7 @@ export default {
 function createNav() {
   return [
     {
-      text: "🔥 EHR",
+      text: "🔥 DigitalTWINS on FHIR",
       items: [
         {
           items: [
@@ -93,8 +91,8 @@ function createNav() {
           ],
         },
         {
-          text: "🌋 FHIR",
-          link: "/docs/ehr/fhir/01-fhir-resources",
+          text: "🌋 DToF",
+          link: "/docs/ehr/fhir/digitaltwins-on-fhir/digitaltwinsonfhir",
           activeMatch: "/docs/ehr",
         },
         {
@@ -136,6 +134,10 @@ function createEHRColumnSidebar() {
           text: "FHIR",
           // collapsed: false,
           items: [
+            {
+              text: "DToF",
+              link: "/docs/ehr/fhir/digitaltwins-on-fhir/digitaltwinsonfhir",
+            },
             {
               text: "FHIR Resources for EHR (MRI)",
               link: "/docs/ehr/fhir/01-fhir-resources",
