@@ -6,9 +6,17 @@ Amis to conmunicate to DigtialTWIN API to generate uuid for each part (measureme
 ![image](/fhir/03-roadmap/v1.0.0-implement.png)
 
 ## Version latest
-- Using ActivityDefinition to store workflow tool information
-    - `model` and `software` store in participant
+- ResearchStudy for Assay and Study
+- Group for Cohort
+- composition for dataset
+- Overall diagram
+![image](/fhir/03-roadmap/vlatest-overall.png)
+
+- Implementation instances
 ![image](/fhir/03-roadmap/vlatest.png)
+
+## Version 1.0.2
+![image](/fhir/03-roadmap/v1.0.2.png)
 
 ## Version 1.0.1
 - Using ActivityDefinition to store workflow tool information
