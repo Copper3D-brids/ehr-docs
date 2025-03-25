@@ -154,6 +154,10 @@ function createEHRColumnSidebar() {
                   text: "SMART on FHIR: a standards-based, interoperable apps platform for electronic health records",
                   link: "/docs/ehr/literature-review/article-02",
                 },
+                {
+                  text: "Data De-identification",
+                  link: "/docs/ehr/literature-review/data de-identification",
+                }
               ]
             },
             {
