@@ -113,9 +113,9 @@ EUCanSHare, a project focused on cardiovascular data sharing across Europe, empl
 
     - Re-identification Risk Assessments: Evaluates datasets for residual risks, applying additional anonymization if needed.
 
-## Using EUCanSHare apporche to de-identify FHIR Patient resource data
+## De-identifying FHIR Patient Data with EUCanSHare
 
-### Scenario
+### Scenario - FHIR data
 We have FHIR Patient resources stored on your server. We want to share de-identified data for research via EUCanSHare while complying with privacy standards.
 
 - Identify Direct and Indirect Identifiers:
@@ -280,3 +280,142 @@ if __name__ == "__main__":
     print("De-identified Patient:")
     print(json.dumps(deidentified_patient, indent=2))
 ```
+
+## De-identifying Dicom Data with HIPAA
+
+### Scenario - Dicom data
+
+ Now our dataset includes a series of dicom images that we need to de-identify them.
+
+ We can us e below code to do the de-identification based on HIPAA approach.
+
+ ```py
+"""
+anonymisation of DICOM files based on HIPAA standard
+primary packaged: dicomanonymizer: https://pypi.org/project/dicom-anonymizer/
+"""
+
+import json
+
+import pydicom
+# from dicomanonymizer import anonymize, anonymizeDICOMFile, anonymizeDataset
+
+import dicomanonymizer as anonymizer
+
+
+def anon(dcm, anon_id):
+    tags_replaced_by_anon_id = [
+        (0x0010, 0x0020),  # Patient ID
+        (0x0010, 0x0010)  # Patient Name
+    ]
+
+    for tag in tags_replaced_by_anon_id:
+        dcm[tag].value = anon_id
+
+    return dcm
+
+def replace_by_anon_id(dataset, tag):
+    element = dataset.get(tag)
+    if element is not None:
+        element.value = anon_id
+
+if __name__ == '__main__':
+    input_dicom_file = "/path_to_input/original.dcm"
+    output_dicom_path = "/path_to_output/anonymised.dcm"
+    anon_id = "anon_0001"
+
+    dcm = pydicom.read_file(input_dicom_file)
+    print(dcm)
+    print("patient id: ", dcm[(0x0010, 0x0020)].value)
+    print("patient name: ", dcm[(0x0010, 0x0010)].value)
+    f = open("original.json", "w")
+    f.write(str(dcm))
+    f.close()
+
+    # set custom rules
+    extra_rules = {}
+
+    tags_to_keep = [
+        (0x0010, 0x1010), # Patient's Age
+        (0x0010, 0x1030), # Patient's Weight
+        (0x0010, 0x1020) # Patient's Size
+    ]
+    for tag in tags_to_keep:
+        extra_rules[tag] = anonymizer.keep
+    # for tag in anonymizer.ALL_TAGS:
+    #     extra_rules[tag] = anonymizer.keep
+
+    tags_replaced_by_anon_id = [
+        (0x0010, 0x0020),  # Patient ID
+        (0x0010, 0x0010)  # Patient Name
+    ]
+    for tag in tags_replaced_by_anon_id:
+        extra_rules[tag] = replace_by_anon_id
+
+    anonymizer.anonymize(
+        input_dicom_file,
+        output_dicom_path,
+        extra_rules,
+        delete_private_tags=False,
+    )
+
+    print("--------------------------------------------------------------------------------------------------")
+    print("anonymised!")
+    dcm = pydicom.read_file(output_dicom_path)
+    print(dcm)
+    print("patient id: ", dcm[(0x0010, 0x0020)].value)
+    print("patient name: ", dcm[(0x0010, 0x0010)].value)
+    f = open("anonymised.json", "w")
+    f.write(str(dcm))
+    f.close()
+ ```
+
+ ## Create SPARC dataset for de-identify data
+
+ Once we finish the FHIR or dicom data de-identification, we can use [sparc-me](https://github.com/SPARC-FAIR-Codeathon/sparc-me) to create the SPARC dataset.
+
+ ```py
+import sparc_me as sm
+save_dir = "./tmp/template/"
+dataset = sm.Dataset()
+dataset.set_path(save_dir)
+dataset.create_empty_dataset(version='2.0.0')
+subjects = []
+samples = []
+
+sample1 = sm.Sample()
+sample1.add_path("./test_data/bids_data/sub-01/sequence1/")
+
+sample1.add_path(["./test_data/sample2/raw/dummy_sam2.txt", "./test_data/sample1/raw/dummy_sam1.txt"])
+samples.append(sample1)
+
+sample2 = sm.Sample()
+sample2.add_path("./test_data/bids_data/sub-01/sequence2/")
+samples.append(sample2)
+
+subject1 = sm.Subject()
+subject1.add_samples(samples)
+subjects.append(subject1)
+dataset.add_subjects(subjects)
+dataset.save()
+ ```
+ For more information, you can read [sparc-me documentation and tutorials](https://github.com/SPARC-FAIR-Codeathon/sparc-me?tab=readme-ov-file#using-sparc-me)
+
+## Upload dataset to DigitalTwins platform
+
+We can use [digitaltwins-api](https://github.com/ABI-CTT-Group/digitaltwins-api) package to upload the dataset.
+
+```py
+from digitaltwins import Uploader
+from pathlib import Path
+
+if __name__ == '__main__':
+    dataset_dir = Path(r"/path/to/dataset_dir")
+
+    uploader = Uploader(Path(r"/path/to/configs.ini"))
+
+    uploader.upload(dataset_dir=dataset_dir)
+    print("done")
+```
+
+For more information, you can read the [digitaltwins-api documentation](https://github.com/ABI-CTT-Group/digitaltwins-api/tree/main?tab=readme-ov-file#introduction)
