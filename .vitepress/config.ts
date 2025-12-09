@@ -105,6 +105,11 @@ function createNav() {
           link: "/docs/ehr/soda/soda_guidelines",
           activeMatch: "/docs/ehr",
         },
+        {
+          text: "🚪 DigitalTWINS Portal",
+          link: "/docs/ehr/development/index",
+          activeMatch: "/docs/ehr",
+        },
       ],
     },
   ];
@@ -246,6 +251,17 @@ function createEHRColumnSidebar() {
             {
               text: "Guidelines",
               link: "/docs/ehr/soda/soda_guidelines",
+            },
+          ],
+        },
+        {
+          text: "DigitalTWINS Portal",
+          link: "/docs/ehr/development/index",
+          // collapsed: false,
+          items: [
+            {
+              text: "Plugins Development",
+              link: "/docs/ehr/development/plugin/index",
             },
           ],
         },
